@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template Generator</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+
+    <h1 class="text-center"> Template Generator</h1>
+    <div class="div-form form">
+        <label class="excel">
+            <span>Choose Excel file</span>
+            <input type="file" id="file-inp" class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"  />
+        </label>
+        <div id="file-input-error" class="error-div file-error hidden">
+            You haven't picked an excel file
+        </div>
+
+        <label>
+           <span> Select template</span>
+            <select id="template-select" class="form-control">
+                <option id="default" value="default" selected>Select a template</option>
+                <option id="schedule-template" value="schedule">Schedule Template</option>
+                <option id="speakers-template" value="speakers">Speakers Template</option>
+                <option id="attendees-template" value="attendees">Attendees Template</option>
+                <option id="delegates-template" value="delegates">Delegates Template</option>
+            </select>
+        </label>
+        <div id="template-input-error" class="error-div template-error hidden">
+            You haven't picked a template
+        </div>
+
+        <button onclick="generate()" class="btn btn-primary">Generate</button>
+    </div>
+
+    <textarea class="form-control" id="renderHere" rows="20" cols="100"></textarea>
+</div>
+
+
+<script id="speakers" type="text/x-handlebars-template">
+    {{#each sheetdata}}
+    <div class="speaker_li">
+        <img src=""/>
+        <p>{{{Speaker}}}</p>
+        <p>{{{Sdescription}}</p>
+    </div>
+    {{/each}}
+</script>
+
+
+<script id="schedule" type="text/x-handlebars-template">
+    <ul id="day1_sch" class="panel" aria-labelledby="day1" role="tabpanel">
+        {{#each sheetdata}}
+        <li>
+            <p class="eventName">{{{Event}}}</p>
+            <p class="time">{{{Time}}}</p>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+<script id="attendees" type="text/x-handlebars-template">
+    {{#each sheetdata}}
+    <div class="speaker_li">
+        <p>{{{Attendee}}}</p>
+        <p>{{{Adescription}}}</p>
+    </div>
+    {{/each}}
+</script>
+
+<script id="delegates" type="text/x-handlebars-template">
+    {{#each sheetdata}}
+    <div class="speaker_li">
+        <p>{{{Delegate}}}</p>
+        <p>{{{Ddescription}}}</p>
+    </div>
+    {{/each}}
+</script>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="js/excel-to-json.min.js"></script>
+<script src="js/handlebars-v4.0.5.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

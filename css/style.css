@@ -1,0 +1,53 @@
+
+.div-form {
+    margin: 50px 0;
+    position: relative;
+}
+
+label {
+    display: block;
+    max-width: 350px;
+    margin: 20px 0;
+    padding: 20px 0;
+    text-align: left;
+    font-weight: normal;
+}
+
+label.excel {
+    padding: 0;
+}
+
+label span {
+    margin: 0 0 10px 0;
+    display: block;
+    font-weight: 600;
+}
+
+.error-div {
+    position: absolute;
+    left: 360px;
+    color: #cc0000;
+}
+
+.file-error {
+    top: 37px;
+}
+
+.template-error {
+    top: 140px;
+}
+
+.hidden {
+    visibility: hidden;
+    display: none;
+}
+
+.err {
+    border: 1px solid #cc0000;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+}
